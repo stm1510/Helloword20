@@ -5,7 +5,3 @@
 <h2> proud of who we are </h2>
 
 <h1> done !!!!!! .... </h1>
-
-<h2> ************** </h2>
-
-<h1> hala madrid </h1>
