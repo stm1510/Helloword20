@@ -28,10 +28,14 @@ pipeline {
          stage('push') {
             steps {
                 echo 'Hello push'
-                sh 'dockerps'
+                sh 'docker ps'
             }
         }
+        stage ('Docker build'){
+         sh ' docker build -t tawfiq15/projject . '
+        }
     }
+    
 
 post {
         always {
