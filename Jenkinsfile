@@ -31,8 +31,8 @@ pipeline {
                 sh 'docker ps'
             }
         }
-        stage ('Docker build'){
-         sh ' docker build -t tawfiq15/projject . '
+         stage ('Docker build'){
+            sh ' docker build -t tawfiq15/projject . '
         }
     }
     
