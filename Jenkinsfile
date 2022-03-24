@@ -27,7 +27,9 @@ pipeline {
         }
          stage('push') {
             steps {
-                echo 'Hello push'
+                withCredentials([file(credentialsId: '', variable: 'dockerpass')]) {
+    // some block
+}
                 sh 'docker ps'
             }
         }
