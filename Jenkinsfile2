@@ -25,7 +25,10 @@ node{
     }
 
     stage ('Push Image'){
-        sh ' docker login -u tawfiq15 -p tawfiq15 '
+    withCredentials([string(credentialsId: 'ddocker', variable: 'dockerpass')]) {
+    // some block
+}
+        sh ' docker login -u tawfiq15 -p ${ddocker} '
         sh 'docker push tawfiq15/webapp'
         
     }
