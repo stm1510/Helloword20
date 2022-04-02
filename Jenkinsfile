@@ -46,7 +46,7 @@ post {
             echo "Always display this message "
         }
         failure {
-            echo "Job failed "
+            echo "Job failed ...."
         }
         success {
             echo "Successful run "
