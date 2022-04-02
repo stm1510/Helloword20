@@ -1,0 +1,32 @@
+node{
+    def maven = tool name : 'maven' 
+	stage ('Git pull'){
+       git branch: 'main', credentialsId: 'Gggithub', url: 'https://github.com/stm1510/Helloword20.git'
+    }  
+    
+    stage ('Maven BUild'){
+        sh " '${maven}/bin/mvn' clean install package"
+    }  
+
+    stage ('Deploy to Container'){
+        deploy adapters: [tomcat8(credentialsId: 'TOMCAT', path: '', url: 'http://52.90.127.229:8080/')], contextPath: null, war: '**/*.war'
+        
+    }
+
+    stage ('Docker Build'){
+        sh ' docker build -t tawfiq15/webapp .'
+        
+    }
+
+    stage ('Docker login'){
+        withCredentials([usernameColonPassword(credentialsId: 'DockerID', variable: 'docker')]) {
+    // some block
+}
+    }
+
+    stage ('Push Image'){
+        sh ' docker login -u tawfiq15 -p tawfiq15 '
+        sh 'docker push tawfiq15/webapp'
+        
+    }
+}
