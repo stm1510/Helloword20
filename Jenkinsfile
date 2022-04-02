@@ -56,5 +56,5 @@ post {
         unstable {
             echo "The job is unstable "
         }
-    } 
-}
+} 
+
