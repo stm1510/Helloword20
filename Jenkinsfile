@@ -21,13 +21,13 @@ pipeline {
         }
          stage('deploy') {
             steps {
-                deploy adapters: [tomcat8(credentialsId: 'TOMCATID', path: '', url: 'http://192.168.0.122:8090/')], contextPath: null, war: '**/*.war'
+                deploy adapters: [tomcat8(credentialsId: 'TOMCAT', path: '', url: 'http://52.90.127.229:8080/')], contextPath: null, war: '**/*.war'
                sh 'pwd'
             }
         }
          stage('push') {
             steps {
-                withCredentials([file(credentialsId: '', variable: 'dockerpass')]) {
+              withCredentials([file(credentialsId: '', variable: 'dockerpass')]) {
     // some block
 }
                 sh 'docker ps'
@@ -35,10 +35,12 @@ pipeline {
         }
          stage ('Docker build') {
              steps {
-                 sh 'docker build -t tawfiq15/projject . '
+                 sh 'docker build -t tawfiq15/tomcatweb . '
+                 sh 'docker push tawfiq15/tomcatweb '
              }
-        }
-    }
+       
+         }
+    }  
     
 
 post {
