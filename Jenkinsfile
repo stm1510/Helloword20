@@ -15,8 +15,8 @@ pipeline {
         }
          stage('test') {
             steps {
-                echo 'Hello test'
-                sleep 5
+                deploy adapters: [tomcat8(credentialsId: 'TOM', path: '', url: 'http://34.224.8.149:8090')], contextPath: null, war: '**/*.war'
+               
             }
         }
          stage('deploy') {
